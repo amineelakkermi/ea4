@@ -1,0 +1,96 @@
+/* Importation des polices depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kufam:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ============================= */
+/* 🎨 Variables globales de thème */
+/* ============================= */
+:root {
+  --color-text: #000; /* Texte clair */
+  --color-bg: #fff;   /* Fond clair */
+
+  /* 🎨 Palette personnalisée */
+  --color-yellow: #B4E50D;
+  --color-dark: #101112;
+  --color-gray: #808182;
+  --color-light-gray: #F3F4F6;
+  --color-accent: #3B82F6; /* Exemple : bleu Tailwind */
+  --color-red: #EF4444;    /* Exemple : rouge vif */
+}
+
+/* ============================= */
+/* 🌙 Mode sombre (optionnel) */
+/* ============================= */
+
+
+/* ============================= */
+/* 🧩 Application des styles globaux */
+/* ============================= */
+body {
+  @apply transition-colors duration-200;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* ============================= */
+/* ✍️ Polices globales */
+/* ============================= */
+* {
+  scroll-behavior: smooth;
+  font-family: "Poppins", "Kufam", sans-serif;
+}
+
+/* ============================= */
+/* 📰 Titres (H1) - Style commun */
+/* ============================= */
+
+h1 {
+  font-family: "Kufam", sans-serif;
+  font-weight: 500; /* medium */
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-kufam {
+  font-family: "Kufam", sans-serif;
+}
+
+/* ============================= */
+/* 📏 Structure */
+/* ============================= */
+html, body {
+  overflow-x: hidden;
+}
+
+/* ============================= */
+
+/* Marquee (infinite horizontal scroll) */
+.marquee { overflow: hidden; }
+.marquee__track { display: flex; width: max-content; gap: 2rem; animation: marquee-scroll 28s linear infinite; will-change: transform; }
+.marquee__group { display: flex; gap: 2rem; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation-duration: 0.01ms; animation-iteration-count: 1; } }
+
+.text-yellow{
+  color: var(--color-yellow);
+}
+
+
+.gradient1{
+  background: linear-gradient(#7fff44, #51ff00);
+  filter: blur(100px);
+  opacity: 1;
+  width: 850px;
+  height: 150px;
+  border-radius: 50%;
+  position: absolute;
+  top: 55%;
+  left: 5%;
+  z-index: -1;
+}
