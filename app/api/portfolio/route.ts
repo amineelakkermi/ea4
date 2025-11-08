@@ -6,6 +6,11 @@ import { UploadApiResponse } from "cloudinary";
 import { error } from "console";
 
 
+interface CloudinaryUploadResult {
+  secure_url: string;
+  [key: string]: any; // pour les autres propriétés éventuelles
+}
+
 // ✅ CREATE PROJECT
 export async function POST(req: NextRequest) {
   try {
@@ -37,14 +42,17 @@ export async function POST(req: NextRequest) {
      const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
 
-        const uploadResult = await new Promise((resolve, reject) => {
-            cloudinary.uploader.upload_stream({ resource_type: 'image' , folder: 'DevEvent'} , (error , results) => {
-                if(error) return reject(error);
-                resolve(results);
-            }).end(buffer);
-        });
-
-    projectData.image = uploadResult.secure_url;
+        const uploadResult: CloudinaryUploadResult = await new Promise((resolve, reject) => {
+  cloudinary.uploader.upload_stream(
+    { resource_type: 'image', folder: 'DevEvent' },
+    (error, result) => {
+      if (error) return reject(error);
+      resolve(result as CloudinaryUploadResult);
+    }
+  ).end(buffer);
+});
+ 
+projectData.image = uploadResult.secure_url;
 
     // 🧩 Create the project
     const createdProject = await Project.create({
