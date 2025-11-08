@@ -27,9 +27,9 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-    const tags = JSON.parse((formData.get("tags") as string) || "[]");
 
     const file = formData.get("image") as File | null;
+    const tags = JSON.parse((formData.get("tags") as string) || "[]");
 
     if (!file) {
       return NextResponse.json(
@@ -53,8 +53,6 @@ export async function POST(req: NextRequest) {
 });
  
 projectData.image = uploadResult.secure_url;
-
-
 
     // 🧩 Create the project
     const createdProject = await Project.create({
