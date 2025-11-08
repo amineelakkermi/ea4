@@ -6,6 +6,12 @@ import { UploadApiResponse } from "cloudinary";
 import { error } from "console";
 
 
+interface CloudinaryUploadResult {
+  secure_url: string;
+  [key: string]: any; // pour les autres propriétés éventuelles
+}
+
+// ✅ CREATE PROJECT
 export async function POST(req: NextRequest) {
   try {
     await connectDB();
@@ -21,9 +27,9 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+    const tags = JSON.parse((formData.get("tags") as string) || "[]");
 
     const file = formData.get("image") as File | null;
-    const tags = JSON.parse((formData.get("tags") as string) || "[]");
 
     if (!file) {
       return NextResponse.json(
@@ -32,25 +38,25 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Convertir le fichier en buffer
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+    // 📤 Upload image to Cloudinary
+     const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
 
-    // Upload vers Cloudinary
-    const uploadResult = await new Promise((resolve, reject) => {
-      cloudinary.uploader.upload_stream(
-        { resource_type: "image", folder: "DevEvent" },
-        (error, result) => {
-          if (error) return reject(error);
-          resolve(result);
-        }
-      ).end(buffer);
-    });
+        const uploadResult: CloudinaryUploadResult = await new Promise((resolve, reject) => {
+  cloudinary.uploader.upload_stream(
+    { resource_type: 'image', folder: 'DevEvent' },
+    (error, result) => {
+      if (error) return reject(error);
+      resolve(result as CloudinaryUploadResult);
+    }
+  ).end(buffer);
+});
+ 
+projectData.image = uploadResult.secure_url;
 
-    // Forcer le type et récupérer l'URL sécurisée
-    projectData.image = (uploadResult as { secure_url: string }).secure_url;
 
-    // Créer le projet
+
+    // 🧩 Create the project
     const createdProject = await Project.create({
       ...projectData,
       tags,
@@ -71,7 +77,6 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
 
 // ✅ GET ALL PROJECTS
 export async function GET() {
