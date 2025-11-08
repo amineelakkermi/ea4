@@ -2,19 +2,23 @@
 import PortfolioCard from "@/components/PortfolioCard"
 import getBaseUrl from "@/lib/url.action"
 
-// Définis le type d’un projet (adapte selon ton modèle Mongoose)
+// 🧩 Type aligné avec ton modèle Mongoose (portfolio.model.ts)
 interface Project {
-  _id?: string
+  _id: string
   title: string
-  description?: string
-  image?: string
-  tags?: string[]
-  [key: string]: any
+  slug: string
+  image: string
+  tags: string[]
+  href?: string
+  createdAt?: string
+  updatedAt?: string
 }
 
 const ProjectList = async () => {
   const BASE_URL = getBaseUrl()
-  const response = await fetch(`${BASE_URL}/api/portfolio`, { next: { revalidate: 60 } })
+  const response = await fetch(`${BASE_URL}/api/portfolio`, {
+    next: { revalidate: 60 },
+  })
 
   if (!response.ok) throw new Error("Failed to fetch projects")
 
@@ -23,7 +27,14 @@ const ProjectList = async () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project) => (
-        <PortfolioCard key={project.title} {...project} />
+        <PortfolioCard
+          key={project._id}
+          title={project.title}
+          slug={project.slug}
+          image={project.image}
+          tags={project.tags}
+          href={project.href || `/projects/${project.slug}`}
+        />
       ))}
     </div>
   )
