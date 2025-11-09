@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import{ JSX } from 'react'
 import styles from '@/styles/style'
 import PortfolioCard from './PortfolioCard'
