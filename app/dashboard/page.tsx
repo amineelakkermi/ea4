@@ -1,6 +1,4 @@
 // app/dashboard/page.tsx
-export const dynamic = 'force-dynamic';
-
 import styles from '@/styles/style';
 import ProjectForm from './ProjectForm';
 import { getServerSession } from 'next-auth';
@@ -15,7 +13,6 @@ const DashboardPage = async () => {
   if (session.user?.role !== 'admin') redirect('/');
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <section
         id="home"
         aria-labelledby="hero-title"
@@ -25,7 +22,6 @@ const DashboardPage = async () => {
           <ProjectForm />
         </div>
       </section>
-    </Suspense>
   );
 };
 

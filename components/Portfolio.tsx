@@ -1,6 +1,4 @@
-export const dynamic = 'force-dynamic';
-
-import{ JSX } from 'react'
+import{ JSX, Suspense } from 'react'
 import styles from '@/styles/style'
 import PortfolioCard from './PortfolioCard'
 import { Project as ProjectModel } from '@/database'
@@ -22,11 +20,12 @@ interface Project {
 
 
 export default async function Portfolio(): Promise<JSX.Element> {
-   
+  'use cache';
+   cacheLife("hours");
 
   const BASE_URL = getBaseUrl();
 
-  const response = await fetch(`${BASE_URL}/api/portfolio`,)
+  const response = await fetch(`${BASE_URL}/api/portfolio`, { next: { revalidate: 3600 }})
 
 
   // Vérifie que la réponse est correcte
@@ -39,7 +38,7 @@ export default async function Portfolio(): Promise<JSX.Element> {
 
 
   return (
-    <section
+      <section
       id="portfolio"
       className={`${styles.padding}  min-h-screen w-full flex flex-col gap-10 md:gap-14 justify-start items-center`}
       aria-labelledby="portfolio-title"

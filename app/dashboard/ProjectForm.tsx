@@ -2,8 +2,6 @@
 
 import React, { Suspense, useState } from 'react'
 
-
-
 type Status = { state: 'idle' | 'submitting' | 'success' | 'error'; message?: string };
 
 export default function ProjectForm(){
@@ -36,7 +34,7 @@ export default function ProjectForm(){
   }
 
   return (
-      <section className="w-full py-10 bg-white">
+     <section className="w-full py-10 bg-white">
       <div className="max-w-3xl mx-auto p-6 rounded-xl border shadow-sm">
         <h2 className="text-2xl font-bold mb-6">Add New Project</h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5">
