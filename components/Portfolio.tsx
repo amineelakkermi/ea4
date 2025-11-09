@@ -20,12 +20,11 @@ interface Project {
 
 
 export default async function Portfolio(): Promise<JSX.Element> {
-   'use cache'
-  cacheLife('hours')
+   
 
   const BASE_URL = getBaseUrl();
 
-  const response = await fetch(`${BASE_URL}/api/portfolio`, { next: { revalidate: 3600 } })
+  const response = await fetch(`${BASE_URL}/api/portfolio`,)
 
 
   // Vérifie que la réponse est correcte
