@@ -23,9 +23,14 @@ export default async function Portfolio(): Promise<JSX.Element> {
   'use cache';
    cacheLife("hours");
 
+
+
+
+  //  Utilise une URL valide dans tous les contextes
   const BASE_URL = getBaseUrl();
 
-  const response = await fetch(`${BASE_URL}/api/portfolio`, { next: { revalidate: 3600 }})
+  const response = await fetch(`${BASE_URL}/api/portfolio`, { next: { revalidate: 3600 } })
+  
 
 
   // Vérifie que la réponse est correcte
