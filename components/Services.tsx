@@ -7,7 +7,7 @@ const Services: React.FC = () => {
   return (
     <section
       id='services'
-      className={`${styles.paddingX} min-h-screen w-full flex flex-col gap-10 justify-center items-center`}
+      className={`${styles.padding} min-h-screen w-full flex flex-col gap-10 justify-center items-center`}
     >
       <h1 className={styles.title}>I Specialize in ⚡ Rank of Skills</h1>
 

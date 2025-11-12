@@ -29,7 +29,7 @@ export default async function Portfolio(): Promise<JSX.Element> {
   return (
     <section
       id="portfolio"
-      className={`${styles.padding} min-h-screen w-full flex flex-col gap-10 md:gap-14 justify-start items-center`}
+      className={`${styles.padding} mt-12 min-h-screen w-full flex flex-col gap-10 md:gap-14 justify-start items-center`}
       aria-labelledby="portfolio-title"
     >
       <h1 id="portfolio-title" className={`${styles.title} text-left`}>
