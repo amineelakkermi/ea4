@@ -16,7 +16,6 @@ const navItems: NavItem[] = [
   { id: 'services', name: 'Services', href: '#services' },
   { id: 'portfolio', name: 'Portfolio', href: '#portfolio' },
   { id: 'contact', name: 'Contact', href: '#contact' },
-  { id: 'dashboard', name: 'Dashboard', href: '/dashboard' }, // page Next.js
 ]
 
 export default function Navbar(): JSX.Element {
