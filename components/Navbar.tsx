@@ -28,6 +28,8 @@ export default function Navbar(): JSX.Element {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  
+
   return (
     <header className="fixed top-4 left-0 right-0 z-[999]">
       <div className="mx-auto w-[94%] sm:w-[90%] lg:w-[86%] max-w-[1100px]">
