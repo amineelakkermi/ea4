@@ -1,26 +1,17 @@
+// app/components/Portfolio.js (Server Component)
 import { JSX } from 'react'
 import styles from '@/styles/style'
 import PortfolioCard from './PortfolioCard'
 import { cacheLife } from 'next/cache'
-import getBaseUrl from '@/lib/url.action'
-import { notFound } from 'next/navigation'
+import connectDB from '@/lib/mongodb'
+import { Project } from '@/database'
 import { GET } from '@/app/api/portfolio/route'
-
-interface Project{
-  _id: string;
-  title: string;
-  slug: string;
-  image: string;
-  tags: string[];
-  href: string;
-}
 
 export default async function Portfolio(): Promise<JSX.Element> {
   'use cache';
   cacheLife('hours');
 
- const projects = await GET(); 
-
+  const projects = await GET();
 
   return (
     <section
@@ -32,7 +23,7 @@ export default async function Portfolio(): Promise<JSX.Element> {
         A Glimpse Into <span role="img" aria-label="target">🎯</span> My Coding Journey
       </h1>
 
-      {projects.length > 0 ? (
+      {projects?.length > 0 ? (
         <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12">
           {projects.map((project) => (
             <PortfolioCard
@@ -51,5 +42,5 @@ export default async function Portfolio(): Promise<JSX.Element> {
         </div>
       )}
     </section>
-  );
+  )
 }

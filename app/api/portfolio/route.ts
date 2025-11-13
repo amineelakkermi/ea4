@@ -77,6 +77,9 @@ projectData.image = uploadResult.secure_url;
   }
 }
 
+
+// ✅ GET PROJECT
+
 {/*
 export async function GET() {
   try {
@@ -93,16 +96,28 @@ export async function GET() {
 }  
 */}
 
-export async function GET(){
-  try{
-    await connectDB();
-    const projects = await Project.find().sort({ createdAt: -1});
-    return projects;
-  } catch(error: unknown){
-    console.error(`Failed to fetch projects` , error);
-    return NextResponse.json({ message: "Failed to fetch projects" } , { status : 500 });
+export async function GET(req: NextRequest) {
+  try {
+    console.log('Connecting to MongoDB...')
+    await connectDB()
+    console.log('Connected! Fetching projects...')
+    const projects = await Project.find().sort({ createdAt: -1 });
+
+    if(req){
+          return NextResponse.json({ message: "Project fetched successfully", projects }, { status: 200 });
+
+    } else{
+      return projects;
+    }
+    
+
+    
+  } catch (error: unknown) {
+    console.error('Failed to fetch projects:', error)
+    return { projects: [] }
   }
-}
+}  
+
 
 // ✅ UPDATE PROJECT
 export async function PUT(req: NextRequest) {
@@ -187,85 +202,5 @@ export async function PUT(req: NextRequest) {
   }
 }
 
-export async function DELETE(req: NextRequest) {
-  try {
-    await connectDB();
 
-    // Récupérer l'ID depuis query param
-    const id = req.nextUrl.searchParams.get("id");
-    if (!id) {
-      return NextResponse.json(
-        { message: "Project ID is required" },
-        { status: 400 }
-      );
-    }
-
-    // Vérifier si le projet existe
-    const project = await Project.findById(id);
-    if (!project) {
-      return NextResponse.json(
-        { message: "Project not found" },
-        { status: 404 }
-      );
-    }
-
-    // Supprimer le projet
-    await Project.findByIdAndDelete(id);
-
-    return NextResponse.json(
-      { message: "Project deleted successfully", id },
-      { status: 200 }
-    );
-  } catch (error: unknown) {
-    console.error("Error deleting project:", error);
-    return NextResponse.json(
-      {
-        message: "Failed to delete project",
-        error: error instanceof Error ? error.message : "Unknown error",
-      },
-      { status: 500 }
-    );
-  }
-}
-
-
-
-
-
-
-// ✅ GET PROJECT BY SLUG
-export async function GetProjectBySlug(req: NextRequest) {
-  try {
-    await connectDB();
-    const slug = req.nextUrl.searchParams.get("slug");
-    if (!slug) {
-      return NextResponse.json(
-        { message: "Slug is required" },
-        { status: 400 }
-      );
-    }
-
-    const project = await Project.findOne({ slug });
-
-    if (!project) {
-      return NextResponse.json(
-        { message: "Project not found" },
-        { status: 404 }
-      );
-    }
-
-    return NextResponse.json(
-      { message: "Project fetched successfully", project },
-      { status: 200 }
-    );
-  } catch (error: unknown) {
-    return NextResponse.json(
-      {
-        message: "Error fetching project",
-        error: error instanceof Error ? error.message : "Unknown error",
-      },
-      { status: 400 }
-    );
-  }
-}
 

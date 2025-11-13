@@ -1,87 +1,74 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../globals.css";
-import Footer from "@/components/Footer";
-import Navbar2 from "@/components/Navbar2";
+'use client'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+type Session = { user?: { role?: string } } | null
 
-
-export const metadata: Metadata = {
-  title: "Portfolio | Développeur Web Front-End & React - [Ton Nom]",
-  description:
-    "Découvrez le portfolio de [Ton Nom], développeur web spécialisé en React, Next.js et Tailwind CSS. Création de sites modernes, rapides et optimisés pour le SEO.",
-  keywords: [
-    "développeur web",
-    "frontend developer",
-    "React",
-    "Next.js",
-    "Tailwind CSS",
-    "portfolio développeur",
-    "création de site web",
-    "freelance web",
-    "JavaScript",
-    "intégration web",
-  ],
-  authors: [{ name: "[Ton Nom]" }],
-  creator: "[Ton Nom]",
-  publisher: "[Ton Nom]",
-  openGraph: {
-    title: "Portfolio | Développeur Web Front-End & React - [Ton Nom]",
-    description:
-      "Développeur web passionné par la création d’expériences numériques modernes et performantes avec React et Next.js.",
-    url: "https://ton-site.vercel.app",
-    siteName: "Portfolio de [Ton Nom]",
-    images: [
-      {
-        url: "https://ton-site.vercel.app/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Aperçu du portfolio de [Ton Nom]",
-      },
-    ],
-    locale: "fr_FR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Portfolio | Développeur Web Front-End & React - [Ton Nom]",
-    description:
-      "Portfolio de [Ton Nom], développeur web spécialisé en React, Next.js et Tailwind CSS.",
-    creator: "@TonPseudoTwitter",
-    images: ["https://ton-site.vercel.app/images/og-image.jpg"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-};
-
-
-
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
+  const [session, setSession] = useState<Session | null>(null)
+  const [loading, setLoading] = useState(true)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    async function fetchSession() {
+      try {
+        const res = await fetch('/api/session')
+        const data = await res.json()
+        setSession(data.session)
+      } catch (_) {
+        setSession(null)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchSession()
+  }, [])
+
+  if (loading) return <p>Chargement...</p>
+
+  if (!session) {
+    if (typeof window !== 'undefined') window.location.href = '/login'
+    return null
+  }
+
+  if (session.user?.role !== 'admin') {
+    if (typeof window !== 'undefined') window.location.href = '/'
+    return null
+  }
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar2 />
+    <div className="relative min-h-screen grid grid-cols-[220px_1fr] bg-white z-[9999]">
+      <aside className="relative z-30 border-r bg-yellow-400 p-4 mr-8 pointer-events-auto overflow-y-auto">
+        <nav className="space-y-2 text-sm">
+          <Link
+            href="/dashboard"
+            aria-current={pathname === '/dashboard' ? 'page' : undefined}
+            className={`block px-3 py-2 rounded hover:bg-gray-100 ${
+              pathname === '/dashboard' ? 'bg-gray-100 font-semibold' : ''
+            }`}
+          >
+            Ajouter un projet
+          </Link>
+          <Link
+            href="/dashboard/list"
+            aria-current={pathname?.startsWith('/dashboard/list') ? 'page' : undefined}
+            className={`block px-3 py-2 rounded hover:bg-gray-100 ${
+              pathname?.startsWith('/dashboard/list') ? 'bg-gray-100 font-semibold' : ''
+            }`}
+          >
+            Liste des projets
+          </Link>
+        </nav>
+      </aside>
+      <main className="relative z-10 p-4">
         {children}
-        <Footer />
-      </body>
-    </html>
-  );
+      </main>
+    </div>
+  )
 }

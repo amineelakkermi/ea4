@@ -1,6 +1,8 @@
 // app/dashboard/ProjectList.tsx
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import PortfolioCard from "@/components/PortfolioCard"
-import getBaseUrl from "@/lib/url.action"
 
 // 🧩 Type aligné avec ton modèle Mongoose (portfolio.model.ts)
 interface Project {
@@ -14,28 +16,58 @@ interface Project {
   updatedAt?: string
 }
 
-const ProjectList = async () => {
-  const BASE_URL = getBaseUrl()
-  const response = await fetch(`${BASE_URL}/api/portfolio`, {
-    next: { revalidate: 60 },
-  })
+const ProjectList = () => {
+  const [projects, setProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  if (!response.ok) throw new Error("Failed to fetch projects")
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const response = await fetch('/api/portfolio', {
+          cache: 'no-store', // 👈 يضمن جلب البيانات دائماً من السيرفر وليس من الكاش
+        })
 
-  const { projects }: { projects: Project[] } = await response.json()
+        if (!response.ok) {
+          throw new Error(`Erreur ${response.status}: ${response.statusText}`)
+        }
+
+        const data = await response.json()
+        setProjects(data.projects || []) // 👈 تأكد أن الـ API يرجع { projects: [...] }
+      } catch (err) {
+        console.error('Erreur de chargement des projets:', err)
+        setError('Impossible de charger les projets.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProjects()
+  }, [])
+
+  if (loading) return <p>Chargement...</p>
+  if (error) return <p className="text-red-600">{error}</p>
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {projects.map((project : Project) => (
-        <PortfolioCard
-          key={project._id}
-          title={project.title}
-          slug={project.slug}
-          image={project.image}
-          tags={project.tags}
-          href={project.href || `/projects/${project.slug}`}
-        />
-      ))}
+    <div className="w-full max-w-7xl mx-auto">
+      {projects.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <PortfolioCard
+              key={project._id}
+              title={project.title}
+              slug={project.slug}
+              image={project.image}
+              tags={project.tags}
+              href={`/dashboard/edit/${project._id}`}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-20">
+          <p className="text-gray-500">Aucun projet disponible pour le moment.</p>
+        </div>
+      )}
     </div>
   )
 }
