@@ -51,7 +51,7 @@ export default function Hero() {
   {/* 2) Wrapper: retire mt-16/md:mt-8/lg:mt-16 qui décalaient vers le bas */}
   <div className="mx-auto max-w-7xl w-full px-6 sm:px-10 py-12">
     <div className="mx-auto max-w-4xl text-center space-y-10">
-      <p className="text-base md:text-lg text-black/80 font-medium">
+      <p className="text-base md:text-lg text-black/80 ">
         Hello <span role="img" aria-label="waving hand">👋</span>, I’m Amine
       </p>
 
