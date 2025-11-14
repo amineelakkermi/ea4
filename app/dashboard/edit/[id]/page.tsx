@@ -2,7 +2,7 @@
 import UpdateProject from '../../UpdateProject'
 
 export default async function EditProjectByIdPage({ params }: { params: { id: string } }) {
-  const { id } = await params; // مباشرة لأن Server Component يمكنه استخدام async
+  const { id } = await params;
 
   return (
     <section className="...">
