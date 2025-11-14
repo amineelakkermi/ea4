@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
@@ -13,6 +12,7 @@ type Project = {
 }
 
 export default function UpdateProject({ id }: { id: string }) {
+  
   const [project, setProject] = useState<Project | null>(null)
   const [title, setTitle] = useState('')
   const [href, setHref] = useState('')
