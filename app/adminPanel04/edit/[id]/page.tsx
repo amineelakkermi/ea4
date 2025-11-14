@@ -1,13 +1,16 @@
- // app/dashboard/edit/[id]/page.tsx
-import { Suspense } from 'react';
+ // app/adminPanel04/edit/[id]/page.tsx
 import UpdateProject from '../../UpdateProject'
 
-export default async function EditProjectByIdPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+interface EditProjectByIdPageProps {
+  params: { id: string }
+}
+
+export default function EditProjectByIdPage({ params }: EditProjectByIdPageProps) {
+  const { id } = params
 
   return (
-   <Suspense fallback={<div>Loading ...</div>}>
+    <section className="w-full">
       <UpdateProject id={id} />
-   </Suspense>
+    </section>
   )
 }
