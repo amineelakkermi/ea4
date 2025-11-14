@@ -55,7 +55,7 @@ export default function UpdateProject({ id }: { id: string }) {
         method: 'DELETE',
       })
       if (!res.ok) throw new Error('La suppression a échoué')
-      router.push('/dashboard/list')
+      router.push('/adminPanel04/list')
     } catch (e: any) {
       setStatus({ state: 'error', message: e?.message || 'Erreur' })
     } finally {

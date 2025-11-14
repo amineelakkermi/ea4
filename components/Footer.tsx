@@ -72,7 +72,9 @@ export default function Footer(): JSX.Element {
         <div className="h-16 sm:h-20 flex items-center justify-between">
           {/* Logo (EA4 text) */}
           <div className="logo">
+            <Link href='/'>
             <Image src={logo2} width={50} height={50} alt='logo' />
+            </Link>
           </div>
 
           {/* Socials */}

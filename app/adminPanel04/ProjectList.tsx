@@ -59,7 +59,7 @@ const ProjectList = () => {
               slug={project.slug}
               image={project.image}
               tags={project.tags}
-              href={`/dashboard/edit/${project._id}`}
+              href={`/adminPanel04/edit/${project._id}`}
             />
           ))}
         </div>

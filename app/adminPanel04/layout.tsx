@@ -48,19 +48,19 @@ export default function DashboardLayout({
       <aside className="relative z-30 border-r bg-yellow-400 p-4 mr-8 pointer-events-auto overflow-y-auto">
         <nav className="space-y-2 text-sm">
           <Link
-            href="/dashboard"
-            aria-current={pathname === '/dashboard' ? 'page' : undefined}
+            href="/adminPanel04"
+            aria-current={pathname === '/adminPanel04' ? 'page' : undefined}
             className={`block px-3 py-2 rounded hover:bg-gray-100 ${
-              pathname === '/dashboard' ? 'bg-gray-100 font-semibold' : ''
+              pathname === '/adminPanel04' ? 'bg-gray-100 font-semibold' : ''
             }`}
           >
             Ajouter un projet
           </Link>
           <Link
-            href="/dashboard/list"
-            aria-current={pathname?.startsWith('/dashboard/list') ? 'page' : undefined}
+            href="/adminPanel04/list"
+            aria-current={pathname?.startsWith('/adminPanel04/list') ? 'page' : undefined}
             className={`block px-3 py-2 rounded hover:bg-gray-100 ${
-              pathname?.startsWith('/dashboard/list') ? 'bg-gray-100 font-semibold' : ''
+              pathname?.startsWith('/adminPanel04/list') ? 'bg-gray-100 font-semibold' : ''
             }`}
           >
             Liste des projets
