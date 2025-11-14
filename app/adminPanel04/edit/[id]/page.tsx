@@ -5,8 +5,8 @@ interface EditProjectByIdPageProps {
   params: { id: string }
 }
 
-export default function EditProjectByIdPage({ params }: EditProjectByIdPageProps) {
-  const { id } = params
+export default async function EditProjectByIdPage({ params }: EditProjectByIdPageProps) {
+  const { id } = await params
 
   return (
     <section className="w-full">
