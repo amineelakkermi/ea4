@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -44,8 +44,7 @@ export default function DashboardLayout({
   }
 
   return (
-    <Suspense fallback={<p>Loading ...</p>}>
-      <div className="relative min-h-screen grid grid-cols-[220px_1fr] bg-white z-[9999]">
+    <div className="relative min-h-screen grid grid-cols-[220px_1fr] bg-white z-[9999]">
       <aside className="relative z-30 border-r bg-yellow-400 p-4 mr-8 pointer-events-auto overflow-y-auto">
         <nav className="space-y-2 text-sm">
           <Link
@@ -72,6 +71,5 @@ export default function DashboardLayout({
         {children}
       </main>
     </div>
-    </Suspense>
   )
 }
