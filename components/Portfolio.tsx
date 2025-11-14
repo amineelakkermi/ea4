@@ -8,8 +8,8 @@ import { Project } from '@/database'
 import { GET } from '@/app/api/portfolio/route'
 
 export default async function Portfolio(): Promise<JSX.Element> {
-  // 'use cache';  cacheLife('hours'); 
-  
+  'use cache';
+  cacheLife('hours');
 
   const projects = await GET();
 

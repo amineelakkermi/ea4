@@ -1,6 +1,4 @@
-export const dynamic = "force-dynamic";
- 
-// app/dashboard/edit/[id]/page.tsx
+ // app/dashboard/edit/[id]/page.tsx
 import UpdateProject from '../../UpdateProject'
 
 export default async function EditProjectByIdPage({ params }: { params: { id: string } }) {
