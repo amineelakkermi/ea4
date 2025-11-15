@@ -1,6 +1,9 @@
 'use client'
 
+import styles from '@/styles/style';
 import React, { JSX, useMemo, useState } from 'react'
+import Title from './Title';
+import BlurText from './BlurText';
 
 type Status = { state: 'idle' | 'submitting' | 'success' | 'error'; message?: string }
 type FormDataT = { name: string; email: string; projectType: string; budget: string; message?: string }
@@ -57,9 +60,13 @@ export default function Contact(): JSX.Element {
       <div className="mx-auto w-[92%] sm:w-[88%] max-w-5xl">
         {/* Title */}
         <header className="mb-8 text-center">
-          <h1 className="font-kufam text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-black">
-            Let’s work together
-          </h1>
+           <BlurText
+      text="Let’s work together"
+      delay={150}
+      animateBy="words"
+      direction="top"
+      className="text-[35px] lg:text-[64px] font-poppins font-[600]"/>
+
           <p className="mt-3 text-sm sm:text-base text-neutral-600">
             Fill out the form and I’ll reach out within 24–48 hours.
           </p>

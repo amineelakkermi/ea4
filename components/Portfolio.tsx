@@ -6,6 +6,8 @@ import { cacheLife } from 'next/cache'
 import connectDB from '@/lib/mongodb'
 import { Project } from '@/database'
 import { GET } from '@/app/api/portfolio/route'
+import Title from './Title'
+import BlurText from './BlurText'
 
 export default async function Portfolio(): Promise<JSX.Element> {
   'use cache';
@@ -19,9 +21,18 @@ export default async function Portfolio(): Promise<JSX.Element> {
       className={`${styles.padding} mt-12 min-h-screen w-full flex flex-col gap-10 md:gap-14 justify-start items-center`}
       aria-labelledby="portfolio-title"
     >
-      <h1 id="portfolio-title" className={`${styles.title} text-left`}>
-        A Glimpse Into <span role="img" aria-label="target">🎯</span> My Coding Journey
-      </h1>
+     
+
+       <BlurText
+      text="A Glimpse Into 🎯 My Coding Journey"
+      delay={150}
+      animateBy="words"
+      direction="top"
+      className="text-[35px] lg:text-[64px] font-poppins font-[600]"/>
+
+    
+    
+    
 
       {projects?.length > 0 ? (
         <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12">

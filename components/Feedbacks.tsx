@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import styles from '@/styles/style'
+import Title from './Title';
+import BlurText from './BlurText';
 
 interface Feedback{
   _id: string;
@@ -48,12 +50,15 @@ export default function Feedbacks() {
     >
       {/* Header */}
       <div className="w-full max-w-7xl border-b border-black/40 py-8 flex items-center justify-between">
-        <h2
-          id="feedbacks-title"
-          className="text-black font-kufam font-medium tracking-tight text-[28px] md:text-[34px] lg:text-[40px] uppercase"
-        >
-          WHAT CLIENT SAYS
-        </h2>
+     
+
+
+         <BlurText
+              text="WHAT CLIENT SAYS"
+              delay={150}
+              animateBy="words"
+              direction="top"
+              className="text-[35px] lg:text-[64px] font-poppins font-[600]"/>
 
         <div className="ml-6 hidden sm:flex items-center gap-3">
           <button

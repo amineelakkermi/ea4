@@ -43,13 +43,7 @@ body {
 /* 📰 Titres (H1) - Style commun */
 /* ============================= */
 
-h1 {
-  font-family: "Kufam", sans-serif;
-  font-weight: 500; /* medium */
-  font-size: clamp(36px, 6vw, 64px);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
+
 
 .font-poppins {
   font-family: "Poppins", sans-serif;
