@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Cursor from "@/components/Cursor";
 
 
 
@@ -80,6 +81,7 @@ export default function RootLayout({
       <body
         className={`${fontClass} ${poppins.variable} antialiased`}
       >
+        <Cursor />
         <Navbar />
         {children}
         <Footer />
