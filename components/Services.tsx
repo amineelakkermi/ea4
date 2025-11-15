@@ -19,7 +19,7 @@ const Services: React.FC = () => {
       delay={150}
       animateBy="words"
       direction="top"
-      className="text-[35px] lg:text-[64px] font-poppins font-[600]"/>
+      className="text-[35px] lg:text-[64px] font-poppins font-[500]"/>
 
      
 
