@@ -6,7 +6,7 @@ import BlurText from './BlurText';
 
 const Experience = () => {
   return (
-   <div className='relative w-full'>
+   <div id='experience' className='relative w-full'>
     <div className={`max-w-7xl mx-auto px-6 sm:px-10 py-24 flex justify-between items-center`}>
       <div className="w-[70%]">
       <BlurText
