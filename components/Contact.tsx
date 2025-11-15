@@ -172,7 +172,7 @@ export default function Contact(): JSX.Element {
                            bg-lime-300 hover:bg-lime-300/90 transition-colors ring-1 ring-black shadow-[0_2px_0_#000]
                            disabled:opacity-60"
               >
-                {status.state === 'submitting' ? 'Sending…' : 'Send Request'}
+                {status.state === 'submitting' ? 'Sending…' : 'Send'}
               </button>
             </div>
 
