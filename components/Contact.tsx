@@ -16,12 +16,13 @@ export default function Contact(): JSX.Element {
   const [status, setStatus] = useState<Status>({ state: 'idle' })
   const [errors, setErrors] = useState<Partial<Record<keyof FormDataT, string>>>({})
 
+  
   const budgets = useMemo(
-    () => ['< $1,000', '$1,000 – $3,000', '$3,000 – $10,000', '$10,000+'],
-    []
-  )
+  () => ['150$ – 300$', '300$ – 600$', '> 600$'],
+  []
+)
   const types = useMemo(
-    () => ['Website', 'Web App', 'UI/UX Design', 'E‑commerce', 'Consultation'],
+    () => ['Landing page', 'Figma to code', 'Informational website', 'Ecommerce'],
     []
   )
 
@@ -44,8 +45,17 @@ export default function Contact(): JSX.Element {
 
     try {
       setStatus({ state: 'submitting' })
-      // TODO: replace with your API/Email endpoint
-      await new Promise((r) => setTimeout(r, 800))
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { message?: string } | null
+        throw new Error(body?.message || 'Failed to send message')
+      }
+
       setStatus({ state: 'success', message: 'Thanks! I will get back to you shortly.' })
       form.reset()
     } catch {
@@ -84,7 +94,7 @@ export default function Contact(): JSX.Element {
                 <label htmlFor="name" className="block text-sm font-medium text-black">
                   Name
                 </label>
-                <input id="name" name="name" placeholder="John Doe" autoComplete="name" className={inputBase} />
+                <input id="name" name="name" placeholder="Enter your name" autoComplete="name" className={inputBase} />
                 {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
               </div>
 
@@ -97,7 +107,7 @@ export default function Contact(): JSX.Element {
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="john@company.com"
+                  placeholder="Enter your email"
                   autoComplete="email"
                   className={inputBase}
                 />

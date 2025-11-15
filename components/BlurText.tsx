@@ -21,7 +21,10 @@ const buildKeyframes = (
   from: Record<string, string | number>,
   steps: Array<Record<string, string | number>>
 ): Record<string, Array<string | number>> => {
-  const keys = new Set<string>([...Object.keys(from), ...steps.flatMap(s => Object.keys(s))]);
+  const keys = new Set<string>([
+    ...Object.keys(from),
+    ...steps.flatMap(s => Object.keys(s))
+  ]);
 
   const keyframes: Record<string, Array<string | number>> = {};
   keys.forEach(k => {
@@ -44,7 +47,8 @@ const BlurText: React.FC<BlurTextProps> = ({
   onAnimationComplete,
   stepDuration = 0.35
 }) => {
-  const elements = animateBy === 'words' ? text.split(' ') : text.split('');
+  const elements =
+    animateBy === 'words' ? text.split(' ') : text.split('');
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLParagraphElement>(null);
 
@@ -65,7 +69,9 @@ const BlurText: React.FC<BlurTextProps> = ({
 
   const defaultFrom = useMemo(
     () =>
-      direction === 'top' ? { filter: 'blur(10px)', opacity: 0, y: -50 } : { filter: 'blur(10px)', opacity: 0, y: 50 },
+      direction === 'top'
+        ? { filter: 'blur(10px)', opacity: 0, y: -50 }
+        : { filter: 'blur(10px)', opacity: 0, y: 50 },
     [direction]
   );
 
@@ -86,10 +92,13 @@ const BlurText: React.FC<BlurTextProps> = ({
 
   const stepCount = toSnapshots.length + 1;
   const totalDuration = stepDuration * (stepCount - 1);
-  const times = Array.from({ length: stepCount }, (_, i) => (stepCount === 1 ? 0 : i / (stepCount - 1)));
+  const times = Array.from(
+    { length: stepCount },
+    (_, i) => (stepCount === 1 ? 0 : i / (stepCount - 1))
+  );
 
   return (
-    <p ref={ref} className={`blur-text ${className} flex flex-wrap`}>
+    <h1 ref={ref} className={`blur-text inline-block ${className}`}>
       {elements.map((segment, index) => {
         const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
 
@@ -106,18 +115,24 @@ const BlurText: React.FC<BlurTextProps> = ({
             initial={fromSnapshot}
             animate={inView ? animateKeyframes : fromSnapshot}
             transition={spanTransition}
-            onAnimationComplete={index === elements.length - 1 ? onAnimationComplete : undefined}
+            onAnimationComplete={
+              index === elements.length - 1
+                ? onAnimationComplete
+                : undefined
+            }
             style={{
               display: 'inline-block',
               willChange: 'transform, filter, opacity'
             }}
           >
             {segment === ' ' ? '\u00A0' : segment}
-            {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}
+            {animateBy === 'words' &&
+              index < elements.length - 1 &&
+              '\u00A0'}
           </motion.span>
         );
       })}
-    </p>
+    </h1>
   );
 };
 

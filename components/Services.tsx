@@ -20,6 +20,8 @@ const Services: React.FC = () => {
       direction="top"
       className="text-[35px] lg:text-[64px] font-poppins font-[600]"/>
 
+     
+
       <div className="max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {servicesCardData.map((service: ServiceCardData, index: number) => (
           <ServicesCard key={service.id} service={service} index={index} />
