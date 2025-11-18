@@ -19,7 +19,7 @@ export default async function Portfolio(): Promise<JSX.Element> {
   return (
     <section
       id="portfolio"
-      className={`${styles.padding} relative min-h-[100svh] w-full flex flex-col justify-start items-center`}
+      className={`${styles.padding} relative min-h-[100svh] w-full flex flex-col justify-center items-center`}
       aria-labelledby="portfolio-title"
     >
 

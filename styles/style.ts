@@ -10,7 +10,7 @@ const styles = {
   
     paddingX: "lg:px-16 px-6",
     paddingY: "lg:py-16 py-12",
-    padding: "lg:px-12 px-6 lg:py-12 py-6",
+    padding: "lg:px-12 px-6 py-12",
     marginX: "lg:mx-16 mx-6",
     marginY: "lg:my-16 my-6",
 };
