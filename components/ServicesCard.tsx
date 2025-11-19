@@ -12,7 +12,7 @@ const ServicesCard: React.FC<Props> = ({ service, index = 0 }) => {
   return (
     <article
       className={`${
-        isHighlighted ? 'bg-[#B4E50D] rotate-3' : 'bg-white hover:rotate-3'
+        isHighlighted ? 'bg-[#B4E50D] rotate-3' : 'bg-beige hover:rotate-3'
       } mt-5 border-2 border-[#000] flex flex-col items-center text-center p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-500`}
     >
       <Image
