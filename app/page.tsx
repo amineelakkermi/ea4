@@ -14,7 +14,6 @@ const page = () => {
   return (
     <main>
       <Hero />
-      <Technologies />
       <Experience />
       <Services />
       <Portfolio />

@@ -9,7 +9,7 @@ type Status = { state: 'idle' | 'submitting' | 'success' | 'error'; message?: st
 type FormDataT = { name: string; email: string; projectType: string; budget: string; message?: string }
 
 const inputBase =
-  'mt-2 block w-full rounded-xl border border-black/15 bg-white px-3.5 py-3 text-sm text-black outline-none transition ' +
+  'mt-2 block w-full rounded-xl border border-black/15 px-3.5 py-3 text-sm text-black outline-none transition ' +
   'placeholder:text-neutral-400 focus:border-black/40 focus:ring-2 focus:ring-black/10'
 
 export default function Contact(): JSX.Element {
@@ -66,7 +66,7 @@ export default function Contact(): JSX.Element {
   return (
     <section
     id='contact'
-    className="w-full bg-white py-10 sm:py-14">
+    className={`${styles.paddingY} w-full`}>
       <div className="mx-auto w-[92%] sm:w-[88%] max-w-5xl">
         {/* Title */}
         <header className="mb-8 text-center">
@@ -83,7 +83,7 @@ export default function Contact(): JSX.Element {
         </header>
 
         {/* Glass card */}
-        <div className="rounded-3xl border border-black/10 bg-white/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,.06)]">
+        <div className="rounded-3xl border border-black/10 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,.06)]">
           <form onSubmit={handleSubmit} noValidate className="p-5 sm:p-7 md:p-8">
             {/* Honeypot */}
             <input name="company" className="hidden" tabIndex={-1} autoComplete="off" />

@@ -77,9 +77,9 @@ export default function Navbar(): JSX.Element {
           className={[
             'rounded-full border px-4 sm:px-6',
             'h-14 sm:h-16 flex items-center justify-between',
-            'backdrop-blur-md supports-[backdrop-filter]:bg-white/40',
-            'bg-white/35 border-black/10 shadow-sm',
-            isScrolled ? 'bg-white/55 border-black/20 shadow-md' : '',
+            'backdrop-blur-md supports-[backdrop-filter]:bg-beige',
+            'bg-beige border-black/10 shadow-sm bg-beige border-black/20 shadow-lg',
+            ,
           ].join(' ')}
           aria-label="Main navigation"
         >

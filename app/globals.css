@@ -10,6 +10,7 @@
 
   /* 🎨 Palette personnalisée */
   --color-yellow: #B4E50D;
+  --color-beige: #faf8f5;
   --color-dark: #101112;
   --color-gray: #808182;
   --color-light-gray: #F3F4F6;
@@ -45,6 +46,7 @@ body {
 
 
 
+
 .font-poppins {
   font-family: "Poppins", sans-serif;
 }
@@ -74,6 +76,13 @@ html, body {
   color: var(--color-yellow);
 }
 
+.bg-beige{
+  background-color: var(--color-beige);
+}
+
+.bg-beige{
+  background-color: var(--color-beige);
+}
 
 .gradient1{
   background: linear-gradient(#7fff44, #51ff00);
@@ -83,8 +92,8 @@ html, body {
   height: 300px;
   border-radius: 50%;
   position: absolute;
-  top: 5%;
-  left: 15%;
+  top: 65%;
+  right: 15%;
   z-index: -1;
 }
 

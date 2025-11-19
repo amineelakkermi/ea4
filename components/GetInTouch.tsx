@@ -68,7 +68,7 @@ const GetInTouch = () => {
         {/* FLOATING DIV */}
         <div
           ref={divRef}
-          className="absolute right-[10%] bottom-[5%] w-[150px] md:w-[200px] h-[50px] md:h-[80px] rounded-[53px] bg-white shadow-lg"
+          className="absolute right-[10%] bottom-[5%] w-[150px] md:w-[200px] h-[50px] md:h-[80px] rounded-[53px] bg-yellow shadow-lg"
         />
 
         {/* SCROLLING LINE */}

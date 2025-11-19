@@ -85,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fontClass} ${poppins.variable} ${josefinSans.variable} antialiased`}
+        className={`bg-beige ${fontClass} ${poppins.variable} ${josefinSans.variable} antialiased`}
       >
         <Cursor />
         <Navbar />
