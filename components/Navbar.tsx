@@ -71,23 +71,28 @@ export default function Navbar(): JSX.Element {
   }, [isOpen])
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-[999]">
+    <header
+      className={`fixed top-0 left-0 right-0 z-[999] py-3 transition-all duration-300`}
+    >
       <div className="mx-auto w-[94%] sm:w-[90%] lg:w-[86%] max-w-[1100px]">
         <nav
           className={[
-            'rounded-full border px-4 sm:px-6',
-            'h-14 sm:h-16 flex items-center justify-between',
-            'backdrop-blur-md supports-[backdrop-filter]:bg-beige',
-            'bg-beige border-black/10 shadow-sm bg-beige border-black/20 shadow-lg',
-            ,
+            'flex h-14 sm:h-16 items-center justify-between',
+            'rounded-full px-4 sm:px-6',
+            'bg-white/70 border border-black/[0.04] shadow-sm',
+            'backdrop-blur-lg supports-[backdrop-filter]:bg-white/60',
+            'transition-all duration-300',
           ].join(' ')}
           aria-label="Main navigation"
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center" aria-label="Go to homepage">
+          <Link href="/" className="flex items-center gap-2" aria-label="Go to homepage">
             <div className="logo">
-              <Image src={logo} width={50} height={50} alt="logo" />
+              <Image src={logo} width={42} height={42} alt="logo" className="rounded-full" />
             </div>
+            <span className="hidden sm:inline-block text-sm font-semibold tracking-[0.18em] uppercase text-slate-700">
+              Portfolio
+            </span>
           </Link>
 
           {/* Desktop menu */}
@@ -96,9 +101,10 @@ export default function Navbar(): JSX.Element {
               <li key={item.id}>
                 <Link
                   href={item.id !== 'dashboard' ? `/#${item.id}` : '/dashboard'}
-                  className="text-black font-medium tracking-wide hover:opacity-80 transition-colors"
+                  className="relative text-[0.9rem] text-slate-800 font-medium tracking-wide transition-colors duration-200 hover:text-slate-950"
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  <span className="pointer-events-none absolute inset-x-0 bottom-[-6px] h-[2px] origin-center scale-x-0 rounded-full bg-slate-900 transition-transform duration-200 ease-out group-hover:scale-x-100" />
                 </Link>
               </li>
             ))}
@@ -106,7 +112,7 @@ export default function Navbar(): JSX.Element {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden text-black"
+            className="md:hidden text-slate-900 rounded-full border border-black/5 p-1.5 bg-white/70 shadow-sm backdrop-blur"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
             onClick={() => setIsOpen((v) => !v)}
@@ -152,14 +158,14 @@ export default function Navbar(): JSX.Element {
         {isOpen && (
           <div
             ref={mobileMenuRef}
-            className="md:hidden mt-2 rounded-2xl border border-black/10 backdrop-blur-md supports-[backdrop-filter]:bg-white/40 bg-white/35 shadow-sm origin-top"
+            className="md:hidden mt-2 rounded-2xl border border-black/10 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 bg-white/60 shadow-lg origin-top"
           >
             <ul ref={mobileListRef} className="flex flex-col py-2">
               {navItems.map((item) => (
                 <li key={item.id}>
                   <Link
                     href={item.href}
-                    className="block px-4 py-3 text-black font-medium tracking-wide hover:bg-black/[0.04]"
+                    className="block px-4 py-3 text-slate-900 font-medium tracking-wide hover:bg-black/[0.03] transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
