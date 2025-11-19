@@ -22,7 +22,7 @@ const Experience = () => {
       ease: "none",
       scrollTrigger: {
         trigger: "#experience",
-        start: "top 90%",    // réduit la zone -> plus rapide
+        start: "top 100%",    // réduit la zone -> plus rapide
         end: "bottom 120%",
         scrub: 1.5,          // smooth & rapide
       }
@@ -30,7 +30,7 @@ const Experience = () => {
 
     // RIGHT ICON (descend très vite)
     gsap.to(right, {
-      y: 140,
+      y: 100,
       ease: "none",
       scrollTrigger: {
         trigger: "#experience",
@@ -46,17 +46,17 @@ const Experience = () => {
   return (
     <div
       id="experience"
-      className={`w-full relative lg:px-12 px-6 pt-12 rounded-[35px] min-h-[400px] flex items-center`}
+      className={`w-full  relative lg:px-12 px-6 pt-12 min-h-[500px] flex items-center`}
     >
       
-      <div className='max-w-3xl mx-auto'>
+      <div className='max-w-6xl mx-auto'>
        <Title />
       </div>
 
 
 
       {/* LEFT ICON */}
-      <div ref={leftIconRef} className="absolute left-[5%] lg:left-[10%] bottom-[-5%] md:bottom-[0%]">
+      <div ref={leftIconRef} className="absolute left-[5%] lg:left-[10%] bottom-[-20%] md:bottom-[0%]">
         <svg xmlns="http://www.w3.org/2000/svg" className="w-[45px] md:w-[80px] h-[45px] md:h-[80px]" fill="none" viewBox="0 0 256 256">
           <path d="M 228 0 C 172.772 0 128 44.772 128 100 L 128 0 L 0 0 L 0 28 C 0 83.228 44.772 128 100 128 L 0 128 L 0 256 L 28 256 C 83.228 256 128 211.228 128 156 L 128 256 L 256 256 L 256 228 C 256 172.772 211.228 128 156 128 L 256 128 L 256 0 Z" fill="#B4E50D" />
         </svg>

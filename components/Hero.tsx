@@ -5,6 +5,7 @@ import Link from 'next/link'
 import HeroSahpes from './HeroSahpes'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import Technologies from './Technologies'
 
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement | null>(null)
@@ -40,34 +41,8 @@ export default function Hero() {
     <section
       id="home"
       aria-labelledby="hero-title"
-      className="relative isolate min-h-[100svh] grid place-items-center overflow-hidden bg-gradient-to-br from-white via-gray-50/30 to-lime-50/20"
+      className="relative bg isolate min-h-[100svh] grid place-items-center overflow-hidden"
     >
-
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10">      
-        <svg
-          className="w-full h-auto"
-          viewBox="0 0 1440 200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,100 C360,20 720,20 1080,100 C1260,140 1350,160 1440,160 L1440,200 L0,200 Z"
-            fill="#D9F99D"
-            opacity="0.3"
-          />
-          <path
-            d="M0,120 C360,40 720,40 1080,120 C1260,160 1350,180 1440,180 L1440,200 L0,200 Z"
-            fill="#BEF264"
-            opacity="0.5"
-          />
-          <path
-            d="M0,140 C360,80 720,80 1080,140 C1260,170 1350,190 1440,190 L1440,200 L0,200 Z"
-            fill="#A3E635"
-          />
-        </svg>
-      </div>
-
 
     <HeroSahpes />
 
@@ -104,6 +79,11 @@ export default function Hero() {
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* Technologies Section */}
+      <div className='absolute bottom-0 left-0 right-0'>
+      <Technologies />
       </div>
     </section>
   )

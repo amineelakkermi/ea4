@@ -84,6 +84,14 @@ html, body {
   background-color: var(--color-yellow);
 }
 
+.bg{
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(253, 203, 96, 0.2) 70%), linear-gradient(179.65deg, #FFFFFF 67.2%, #FFE9BA 99.7%);
+}
+
+.bg2{
+  background: linear-gradient(0.06deg, rgba(255, 255, 255, 0) 0.05%, rgba(253, 203, 96, 0.2) 69.98%), linear-gradient(359.65deg, #FFFFFF 67.2%, #FFE9BA 99.69%);
+}
+
 .gradient1{
   background: linear-gradient(#51ff00, #51ff00);
   filter: blur(100px);

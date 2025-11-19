@@ -15,7 +15,7 @@ const Technologies: React.FC = () => {
   const items = Array.from({ length: 8 }, () => technologies).flat();
 
   return (
-    <div className="relative w-full overflow-hidden select-none mb-16 py-16 border-t border-gray-800 bg-black">
+    <div className="relative w-full overflow-hidden select-none p-16 border-t border-black/10">
       <div className="track" aria-hidden>
         {items.map((item, index) => (
           <span key={`a-${index}`} className="chunk">
@@ -25,12 +25,12 @@ const Technologies: React.FC = () => {
               target='_blank'
               rel="noreferrer noopener"
             >
-              <span className="label text-white">{item}</span>
+              <span className="label text-black">{item}</span>
               <span className="plane-wrap" aria-hidden>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="26"
-                  height="26"
+                  width="18"
+                  height="18"
                   viewBox="0 0 256 256"
                   className="plane"
                 >
@@ -51,12 +51,12 @@ const Technologies: React.FC = () => {
               className='flex gap-5 items-center'
               rel="noreferrer noopener"
             >
-              <span className="label text-gray-100">{item}</span>
+              <span className="label text-black">{item}</span>
               <span className="plane-wrap" aria-hidden>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="26"
-                  height="26"
+                  width="18"
+                  height="18"
                   viewBox="0 0 256 256"
                   className="plane"
                 >
@@ -74,9 +74,9 @@ const Technologies: React.FC = () => {
       <style jsx>{`
         .track { position: absolute; left: 0; top: 50%; display: inline-flex; gap: 3.5rem; width: max-content; transform: translateY(-50%); animation: scroll-x 120s linear infinite; white-space: nowrap; will-change: transform; }
         .chunk { display: inline-flex; align-items: center; gap: 1.25rem; }
-        .label { font-weight: 900; font-size: clamp(2.25rem, 5vw, 2.5rem); letter-spacing: 0.01em; line-height: 1; }
-        .plane-wrap { display: inline-flex; align-items: center; justify-content: center; width: clamp(1.75rem, 5vw, 3rem); height: clamp(1.75rem, 5vw, 3rem); border-radius: 9999px; background: radial-gradient(circle at 30% 30%, rgba(127,255,68,0.45), rgba(127,255,68,0.12) 70%); border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 2px 10px rgba(0,0,0,0.6); transform: translateZ(0); transition: transform 300ms ease, box-shadow 300ms ease, background 300ms ease; animation: plane-pulse 2.2s ease-in-out infinite; }
-        .plane { width: 60%; height: 60%; color: #fff; filter: drop-shadow(0 0 4px rgba(0,0,0,0.9)); transition: transform 300ms ease; }
+        .label { font-weight: 600; font-size: clamp(2.05rem, 5vw, 2.0rem); letter-spacing: 0.01em; line-height: 1; }
+        .plane-wrap { display: inline-flex; align-items: center; justify-content: center; width: clamp(1.5rem, 4vw, 2rem); height: clamp(1.5rem, 4vw, 2rem); border-radius: 9999px; background: radial-gradient(circle at 30% 30%, rgba(127,255,68,0.45), rgba(127,255,68,0.12) 70%); border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.1); transform: translateZ(0); transition: transform 300ms ease, box-shadow 300ms ease, background 300ms ease; animation: plane-pulse 2.2s ease-in-out infinite; }
+        .plane { width: 50%; height: 50%; color: #fff; transition: transform 300ms ease; }
         .chunk:hover .plane-wrap, a:focus-visible .plane-wrap { transform: scale(1.08) rotate(6deg); box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
         .chunk:hover .plane, a:focus-visible .plane { transform: rotate(12deg) translateY(-1px); }
         @keyframes plane-pulse { 0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,0.1), inset 0 0 10px rgba(127,255,68,0.22); } 50% { box-shadow: 0 4px 16px rgba(0,0,0,0.18), inset 0 0 16px rgba(127,255,68,0.3); } }

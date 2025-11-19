@@ -14,16 +14,12 @@ const ServicesCard: React.FC<Props> = ({ service, index = 0 }) => {
       className={`mt-5 bg-beige hover:rotate-2 group relative hover:rotate-2 overflow-hidden rounded-3xl p-8 border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-500 ease-out`}
     >
       {/* Icon container avec effet de glow */}
-      <div className={`${
-        isHighlighted 
-          ? 'bg-white/20' 
-          : 'bg-gradient-to-br from-gray-50 to-gray-100 group-hover:from-lime-50 group-hover:to-lime-100'
-      } w-20 h-20 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500`}>
+      <div className={` w-20 h-20 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 `}>
         <Image
           src={service.img}
           alt={service.title}
-          width={48}
-          height={48}
+          width={56}
+          height={56}
           className="object-contain"
         />
       </div>

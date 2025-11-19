@@ -41,7 +41,7 @@ const Title = () => {
   return (
     <h1
       ref={titleRef}
-      className="max-w-[800px] italic text-[35px] lg:text-[50px] font-poppins font-[600] overflow-hidden"
+      className="max-w-[900px] italic text-[35px] lg:text-[50px] font-poppins font-[600] overflow-hidden"
     >
       {fullText.split(" ").map((word, index) => (
         <span
