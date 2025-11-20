@@ -11,7 +11,7 @@ const ServicesCard: React.FC<Props> = ({ service, index = 0 }) => {
   const isHighlighted = index === 1; // style différent pour la 2e carte
   return (
     <article
-      className={`mt-5  hover:rotate-2 group relative hover:rotate-2 overflow-hidden rounded-3xl p-8 border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-500 ease-out`}
+      className={`mt-5 ${isHighlighted ? "bg" : ""} hover:rotate-2 group relative hover:rotate-2 overflow-hidden rounded-[10px] p-8 border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-500 ease-out`}
     >
       {/* Icon container avec effet de glow */}
       <div className={` w-20 h-20 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 `}>
@@ -20,21 +20,21 @@ const ServicesCard: React.FC<Props> = ({ service, index = 0 }) => {
           alt={service.title}
           width={56}
           height={56}
-          className="object-contain"
+          className={`${isHighlighted ? "logo" : ""} object-contain `}
         />
       </div>
 
       {/* Title */}
       <h3 className={`${
-        isHighlighted ? 'text-black' : 'text-gray-900'
-      } text-xl font-bold mb-3 leading-tight`}>
+        isHighlighted ? 'text-white' : 'text-gray-900'
+      } text-[25px] font-bold mb-3 leading-tight`}>
         {service.title}
       </h3>
 
       {/* Description */}
       <p className={`${
-        isHighlighted ? 'text-black/80' : 'text-gray-600'
-      } text-sm leading-relaxed`}>
+        isHighlighted ? 'text-gray-100' : 'text-gray-600'
+      } text-md font-500 leading-relaxed`}>
         {service.texte}
       </p>
 

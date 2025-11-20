@@ -41,7 +41,7 @@ const Title = () => {
   return (
     <h1
       ref={titleRef}
-      className="max-w-[900px] italic text-[35px] lg:text-[50px] font-poppins font-[600] overflow-hidden"
+      className="max-w-[900px]  text-[35px] lg:text-[50px] font-kufam font-[600] overflow-hidden"
     >
       {fullText.split(" ").map((word, index) => (
         <span
@@ -49,7 +49,7 @@ const Title = () => {
           className="word inline-block  mr-[0.3em]"
           style={{ lineHeight: "1.2" }}
         >
-          <span className="inline-block">{word}</span>
+          <span className={`inline-block ${index === 1 || index === 2 ? "text-mauve" : ""}`}>{word}</span>
         </span>
       ))}
     </h1>

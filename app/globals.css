@@ -38,7 +38,7 @@ body {
 /* ============================= */
 * {
   scroll-behavior: smooth;
-  font-family: "Poppins";
+  font-family: "Kufam";
 }
 
 /* ============================= */
@@ -90,6 +90,15 @@ html, body {
 .bg{
   background: #7B1DFF 80%;
 }
+
+.text-mauve{
+  color: #7B1DFF ;
+}
+
+.logo{
+  filter: brightness(0) invert(1);
+}
+
 
 
 .texture-bg{

@@ -3,7 +3,6 @@ import styles from '@/styles/style';
 import ServicesCard from './ServicesCard';
 import { servicesCardData, type ServiceCardData } from '@/constants/data';
 import Title from './Title';
-import BlurText from './BlurText';
 
 const Services: React.FC = () => {
   return (
@@ -13,13 +12,7 @@ const Services: React.FC = () => {
     >
     
 
-
-      <BlurText
-      text="I Specialize in ⚡ Rank of Skills"
-      delay={150}
-      animateBy="words"
-      direction="top"
-      className={`${styles.title}`}/>
+      <h1 className={`${styles.title}`}>I Specialize in ⚡ Rank of Skills</h1>
 
      
 
