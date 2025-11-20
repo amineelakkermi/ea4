@@ -9,7 +9,8 @@
   --color-bg: #fff;   /* Fond clair */
 
   /* 🎨 Palette personnalisée */
-  --color-yellow: #B4E50D;
+  --color-yellow: #96f45c;
+  --color-blue: #4681EF;
   --color-beige: #faf8f5;
   --color-dark: #101112;
   --color-gray: #808182;
@@ -72,6 +73,8 @@ html, body {
 @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation-duration: 0.01ms; animation-iteration-count: 1; } }
 
+
+
 .text-yellow{
   color: var(--color-yellow);
 }
@@ -85,11 +88,22 @@ html, body {
 }
 
 .bg{
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(253, 203, 96, 0.2) 70%), linear-gradient(179.65deg, #FFFFFF 67.2%, #FFE9BA 99.7%);
+  background: #7B1DFF 80%;
 }
 
-.bg2{
-  background: linear-gradient(0.06deg, rgba(255, 255, 255, 0) 0.05%, rgba(253, 203, 96, 0.2) 69.98%), linear-gradient(359.65deg, #FFFFFF 67.2%, #FFE9BA 99.69%);
+
+.texture-bg{
+  background-image: url('/texture.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100svh;
+  width: 100vw;
+}
+
+
+.bg-button1{
+   background: var(--color-blue);
 }
 
 .gradient1{
@@ -120,4 +134,29 @@ html, body {
   z-index: -1;
 }
 
+/* Animations personnalisées */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}

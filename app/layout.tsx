@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Josefin_Sans, Poppins } from "next/font/google";
+import { Josefin_Sans, Poppins , Kufam } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -13,10 +13,11 @@ export const poppins = Poppins({
   variable: "--font-poppins",
 })
 
-export const josefinSans = Josefin_Sans({
+
+export const kufam = Kufam({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-josefin-sans",
+  variable: "--font-kufam",
 })
 
 
@@ -85,10 +86,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-beige ${fontClass} ${poppins.variable} ${josefinSans.variable} antialiased`}
+        className={`${fontClass} ${poppins.variable} ${kufam.variable} antialiased`}
       >
         <Cursor />
-        <Navbar />
         {children}
         <Footer />
       </body>

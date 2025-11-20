@@ -47,7 +47,7 @@ const Cursor: React.FC = () => {
     className="pointer-events-none fixed left-0 top-0 -translate-x-1/2 -translate-y-1/2 z-[9999] hidden md:block"
     aria-hidden="true"
   >
-    <div className="w-[100px] h-[100px] rounded-full border border-[#7fff44] bg-[#7fff44]/70 backdrop-blur-sm" />
+    <div className="w-[50px] h-[50px] rounded-full border border-[#7fff44] bg-[#7fff44]/70 backdrop-blur-sm" />
   </div>
 );
 };

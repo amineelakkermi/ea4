@@ -11,7 +11,7 @@ const ServicesCard: React.FC<Props> = ({ service, index = 0 }) => {
   const isHighlighted = index === 1; // style différent pour la 2e carte
   return (
     <article
-      className={`mt-5 bg-beige hover:rotate-2 group relative hover:rotate-2 overflow-hidden rounded-3xl p-8 border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-500 ease-out`}
+      className={`mt-5  hover:rotate-2 group relative hover:rotate-2 overflow-hidden rounded-3xl p-8 border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-500 ease-out`}
     >
       {/* Icon container avec effet de glow */}
       <div className={` w-20 h-20 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 `}>

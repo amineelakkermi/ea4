@@ -9,11 +9,10 @@ import Technologies from './Technologies'
 
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const descRef = useRef<HTMLParagraphElement | null>(null)
   const buttonsRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (!titleRef.current || !descRef.current || !buttonsRef.current) return
+    if (!titleRef.current || !buttonsRef.current) return
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
@@ -22,12 +21,6 @@ export default function Hero() {
       { y: 60, opacity: 0 },
       { y: 0, opacity: 1, duration: 1 }
     )
-      .fromTo(
-        descRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 },
-        '-=0.5'
-      )
       .fromTo(
         buttonsRef.current,
         { y: 30, opacity: 0 },
@@ -41,50 +34,79 @@ export default function Hero() {
     <section
       id="home"
       aria-labelledby="hero-title"
-      className="relative bg isolate min-h-[100svh] grid place-items-center overflow-hidden"
+      className="relative isolate min-h-[100svh] grid place-items-center overflow-hidden"
     >
 
     <HeroSahpes />
 
 
-      {/* 2) Wrapper: retire mt-16/md:mt-8/lg:mt-16 qui décalaient vers le bas */}
-      <div className="mx-auto max-w-7xl w-full pb-6">
-        <div className="mx-auto max-w-4xl text-center space-y-8">
-          <h1 ref={titleRef} className={`${styles.title} text-black leading-[60px] md:leading-[100px]`}>
-         Turning Ideas
+      {/* 2) Wrapper: texte aligné à gauche */}
+      <div className="mx-auto max-w-6xl w-full pb-25 px-6">
+        <div className="max-w-6xl space-y-10">
+          <h1 ref={titleRef} className={`max-w-[1100px] text-[45px] lg:text-[80px] font-kufam text-white font-[600]`}>
+            UI <span className='text-yellow'>DESIGNER</span>
             <br />
-            <span className="px-3 rounded-[10px] bg-black text-white">
-               into Fast
-            </span>{' '}
-            Web Experiences
+            CREATIVE WEB DEVELOPER
           </h1>
 
-          <p ref={descRef} className="max-w-3xl mx-auto text-base sm:text-lg text-neutral-600">
-            I’m a Web Developer specialized in creating fast and aesthetic web
-            experiences using Next.js &amp; TailwindCSS.
+          <p className={`${styles.paragraph} max-w-[650px] text-gray-200`}>
+          I’m a Web Developer specialized in creating fast and aesthetic web experiences using Next.js & TailwindCSS.
           </p>
 
-          <div ref={buttonsRef} className="flex items-center justify-center gap-4 sm:gap-6">
-            <Link
-              href="#contact"
-              className="font-kufam inline-flex items-center justify-center rounded-full px-6 sm:px-8 py-3 text-base font-semibold text-black bg-lime-300 hover:bg-lime-300/90 transition-colors ring-1 ring-black shadow-[0_2px_0_#000]"
-            >
-              Get In Touch
-            </Link>
-            <Link
-              href="#portfolio"
-              className="font-kufam inline-flex items-center justify-center rounded-full px-6 sm:px-8 py-3 text-base font-semibold text-black bg-white hover:bg-black/[0.05] transition-colors ring-1 ring-black"
-            >
-              View Portfolio
-            </Link>
+          {/* Statistics 
+          <div className="flex gap-8 md:gap-12">
+            <div className="flex flex-col">
+              <span className="text-3xl md:text-4xl font-bold text-white font-kufam">02+</span>
+              <span className="text-sm md:text-base text-gray-300 mt-1">Years Experience</span>
+            </div>
+            <div className="h-16 w-[1px] bg-gray-400/30"></div>
+            <div className="flex flex-col">
+              <span className="text-3xl md:text-4xl font-bold text-white font-kufam">+15</span>
+              <span className="text-sm md:text-base text-gray-300 mt-1">Projects Completed</span>
+            </div>
           </div>
+          */}
         </div>
       </div>
 
-      {/* Technologies Section */}
-      <div className='absolute bottom-0 left-0 right-0 w-full'>
-      <Technologies />
+      {/* Scroll Down Indicator */}
+      <div className="absolute bottom-8 right-8 md:bottom-36 md:right-12">
+        <div className="relative w-24 h-24 md:w-28 md:h-28 animate-spin-slow">
+          {/* Circular Text */}
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <defs>
+              <path
+                id="circlePath"
+                d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+              />
+            </defs>
+            <text className="text-[10px] fill-white font-medium tracking-wider">
+              <textPath href="#circlePath" startOffset="0%">
+                * SCROLL DOWN * SCROLL DOWN 
+              </textPath>
+            </text>
+          </svg>
+          
+          {/* Arrow in center */}
+          <div className="absolute inset-0 flex items-center justify-center animate-bounce-slow">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white"
+            >
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <polyline points="19 12 12 19 5 12" />
+            </svg>
+          </div>
+        </div>
       </div>
+    
     </section>
   )
 }
