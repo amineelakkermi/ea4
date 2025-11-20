@@ -16,13 +16,13 @@ export default function PortfolioCard({ title , image, slug, href, tags }: Props
   return (
     <article className="rounded-2xl p-5 md:p-6 ring-1 ring-black/10 shadow-sm">
       {/* Screenshot */}
-      <div className="relative overflow-hidden rounded-xl bg-neutral-200 aspect-[16/11]">
+      <div className="relative overflow-hidden rounded-xl bg-neutral-50 aspect-[16/11]">
         <Image
           src={image}
           alt={title}
           fill
           sizes="(min-width:1024px) 560px, 100vw"
-          className="object-cover hover:scale-105 transition duration-500"
+          className="object-contain hover:scale-105 transition duration-500"
         />
       </div>
 
