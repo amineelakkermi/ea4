@@ -2,11 +2,9 @@
 
 import Link from 'next/link'
 import React, { JSX, useEffect, useRef, useState } from 'react'
-import logo from '@/public/logo.png'
 import logo2 from '@/public/logo2.png'
 import Image from 'next/image'
 import gsap from 'gsap'
-import { style } from 'motion/react-client'
 import styles from '@/styles/style'
 
 interface NavItem {
@@ -39,94 +37,98 @@ export default function Navbar(): JSX.Element {
   useEffect(() => {
     if (!isOpen || !mobileMenuRef.current) return
 
-    const tl = gsap.timeline()
+    // Utiliser un contexte GSAP isolé pour éviter les conflits
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline()
 
-    // Animation du conteneur
-    tl.fromTo(
-      mobileMenuRef.current,
-      { y: -16, opacity: 0, scale: 0.96 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.25,
-        ease: 'power3.out',
-      }
-    )
-
-    // Animation des items
-    if (mobileListRef.current) {
-      const items = Array.from(mobileListRef.current.querySelectorAll('li'))
-
+      // Animation du conteneur
       tl.fromTo(
-        items,
-        { y: 8, opacity: 0 },
+        mobileMenuRef.current,
+        { y: -16, opacity: 0, scale: 0.96 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.22,
+          scale: 1,
+          duration: 0.25,
           ease: 'power3.out',
-          stagger: 0.06,
-        },
-        '-=0.05'
+        }
       )
-    }
+
+      // Animation des items
+      if (mobileListRef.current) {
+        const items = Array.from(mobileListRef.current.querySelectorAll('li'))
+
+        tl.fromTo(
+          items,
+          { y: 8, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
+            stagger: 0.15,
+          },
+          '-=0.1'
+        )
+      }
+    })
+
+    return () => ctx.revert()
   }, [isOpen])
 
   return (
     <>
       {/* Logo */}
-      <div className={`${styles.padding} max-w-6xl mx-auto flex justify-between items-center`}>
-      <Link href="/" className="z-[1000]" aria-label="Go to homepage">
-        <Image src={logo2} width={70} height={70} alt="logo"  />
-      </Link>
+      <div id="main-navbar" className={`${styles.padding} fixed top-0 left-0 right-0 z-[1002] max-w-6xl mx-auto flex justify-between items-center`}>
+        <Link href="/" className="z-[1000]" aria-label="Go to homepage">
+          <Image src={logo2} width={70} height={70} alt="logo" />
+        </Link>
 
-      {/* Hamburger Button */}
-      <button
-        className="right-5 lg:right-36 z-[1001] transition-all duration-300"
-        aria-label="Toggle menu"
-        aria-expanded={isOpen}
-        onClick={() => setIsOpen((v) => !v)}
-      >
-        {isOpen ? (
-          // Close Icon
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            color="white"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-white"
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        ) : (
-          // Menu Icon
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-white"
-          >
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
-        )}
-      </button>
-
+        {/* Hamburger Button */}
+        <button
+          className="right-5 lg:right-36 z-[1001] transition-all duration-300"
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((v) => !v)}
+        >
+          {isOpen ? (
+            // Close Icon
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              color="white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            // Menu Icon
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          )}
+        </button>
       </div>
       {/* Full Screen Menu Overlay */}
       {isOpen && (

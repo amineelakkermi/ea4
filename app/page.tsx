@@ -14,8 +14,9 @@ const page = () => {
     <main>
       {/* Défilement automatique - Activer avec Ctrl+Shift+A */}
       
-      <div className='bg snap-start snap-always'>
       <Navbar />
+      
+      <div className='bg'>
       <Hero />
       </div>
       <Experience />
