@@ -211,3 +211,13 @@ html {
 .animate-bounce-slow {
   animation: bounce-slow 2s ease-in-out infinite;
 }
+
+/* Cacher la scrollbar pour le carrousel mobile */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE et Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari et Opera */
+}

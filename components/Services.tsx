@@ -12,61 +12,71 @@ const Services = () => {
   const servicesSectionRef = useRef(null);
   const servicesContentRef = useRef(null);
   const titleRef = useRef(null);
+  const desktopCardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
 
   useEffect(() => {
     if (!servicesSectionRef.current || !servicesContentRef.current || !titleRef.current) return;
 
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>('.service-card');
+      const isMobile = window.innerWidth < 1024; // lg breakpoint
       
-      // État initial: toutes les cartes cachées
-      gsap.set(cards, { opacity: 0, y: 50, scale: 0.9 });
+      // Sur mobile, pas d'animation GSAP - juste un carrousel simple
+      if (isMobile) {
+        return;
+      }
+
+      // Desktop uniquement: Animation GSAP
+      const cards = desktopCardsRef.current.filter(Boolean) as HTMLDivElement[];
+      
+      console.log('Desktop - Cards found:', cards.length);
+      
+      if (cards.length === 0) {
+        console.warn('No cards found');
+        return;
+      }
 
       // Timeline principale avec pin
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: servicesSectionRef.current,
           start: 'top top',
-          end: '+=400%', // 4 sections: carte1, carte2, carte3, disparition
+          end: '+=400%',
           scrub: 1.5,
           pin: true,
           anticipatePin: 2,
         }
       });
 
+      // Desktop: Animation progressive - toutes les cartes restent visibles
       // Phase 1: Carte 1 apparaît (0-25%)
       if (cards[0]) {
-        tl.to(cards[0], {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: "power2.out",
-        }, 0);
+        tl.fromTo(cards[0],
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, ease: "power2.out" },
+          0
+        );
       }
 
       // Phase 2: Carte 2 apparaît (25-50%)
       if (cards[1]) {
-        tl.to(cards[1], {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: "power2.out",
-        }, 0.25);
+        tl.fromTo(cards[1],
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, ease: "power2.out" },
+          0.25
+        );
       }
 
       // Phase 3: Carte 3 apparaît (50-75%)
       if (cards[2]) {
-        tl.to(cards[2], {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: "power2.out",
-        }, 0.5);
+        tl.fromTo(cards[2],
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, ease: "power2.out" },
+          0.5
+        );
       }
 
       // Phase 4: Disparition de tout (75-100%)
-      // Titre va vers la droite
       tl.to(titleRef.current, {
         opacity: 0,
         x: 500,
@@ -74,7 +84,6 @@ const Services = () => {
         ease: "power2.inOut",
       }, 0.75);
 
-      // Contenu va vers la gauche
       tl.to(servicesContentRef.current, {
         opacity: 0,
         x: -100,
@@ -95,11 +104,30 @@ const Services = () => {
     >
       <h1 ref={titleRef} className={`${styles.title}`}>I Specialize in ⚡ Rank of Skills</h1>
 
-      <div ref={servicesContentRef} className="flex flex-col gap-5">
+      <div ref={servicesContentRef} className="flex flex-col gap-5 w-full">
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Mobile: Carrousel simple - scroll horizontal */}
+        <div className="lg:hidden overflow-x-scroll scrollbar-hide">
+          <div className="flex gap-6 px-6 py-4 w-max">
+            {servicesCardData.map((service, index) => (
+              <div 
+                key={`mobile-${service.id}`}
+                className="w-[85vw] min-h-[400px] flex-shrink-0"
+              >
+                <ServicesCard service={service} index={index} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Grid 3 colonnes */}
+        <div className="hidden lg:grid grid-cols-3 gap-8 max-w-6xl mx-auto w-full">
           {servicesCardData.map((service, index) => (
-            <div key={service.id} className="service-card">
+            <div 
+              key={`desktop-${service.id}`}
+              ref={(el) => { desktopCardsRef.current[index] = el; }}
+
+            >
               <ServicesCard service={service} index={index} />
             </div>
           ))}
