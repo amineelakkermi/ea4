@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Title = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
 
-  const fullText = "With over two years of experience, I build fast and beautiful web experiences.";
+  const fullText = "Designing and building fast, elegant, and engaging web experiences";
 
   useLayoutEffect(() => {
     if (!titleRef.current) return;
@@ -41,7 +41,7 @@ const Title = () => {
   return (
     <h1
       ref={titleRef}
-      className="max-w-[900px]  text-[35px] lg:text-[50px] font-kufam font-[600] overflow-hidden"
+      className="max-w-[900px]  text-[35px] lg:text-[60px] font-kufam font-[600] overflow-hidden"
     >
       {fullText.split(" ").map((word, index) => (
         <span

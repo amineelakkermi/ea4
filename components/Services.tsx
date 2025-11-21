@@ -102,7 +102,7 @@ const Services = () => {
       id="services"
       className={`${styles.padding} relative min-h-[100svh] w-full flex flex-col gap-10 justify-center items-center`}
     >
-      <h1 ref={titleRef} className={`${styles.title}`}>I Specialize in ⚡ Rank of Skills</h1>
+      <h1 ref={titleRef} className={`${styles.title}`}>Web Development Services</h1>
 
       <div ref={servicesContentRef} className="flex flex-col gap-5 w-full">
 
