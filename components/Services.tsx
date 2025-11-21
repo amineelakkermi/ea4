@@ -20,23 +20,31 @@ const Services = () => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>('.service-card');
       
-      // État initial: toutes les cartes cachées sauf la première
+      // État initial: toutes les cartes cachées
       gsap.set(cards, { opacity: 0, y: 50, scale: 0.9 });
-      if (cards[0]) gsap.set(cards[0], { opacity: 1, y: 0, scale: 1 });
 
       // Timeline principale avec pin
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: servicesSectionRef.current,
           start: 'top top',
-          end: '+=400%', // 4 sections: carte1 visible, carte2 apparaît, carte3 apparaît, disparition
+          end: '+=400%', // 4 sections: carte1, carte2, carte3, disparition
           scrub: 1.5,
           pin: true,
-          anticipatePin: 1,
+          anticipatePin: 2,
         }
       });
 
-      // Phase 1: Carte 1 déjà visible (0-25%)
+      // Phase 1: Carte 1 apparaît (0-25%)
+      if (cards[0]) {
+        tl.to(cards[0], {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          ease: "power2.out",
+        }, 0);
+      }
+
       // Phase 2: Carte 2 apparaît (25-50%)
       if (cards[1]) {
         tl.to(cards[1], {
@@ -66,7 +74,7 @@ const Services = () => {
         ease: "power2.inOut",
       }, 0.75);
 
-      // Contenu va vers la gauche avec rotation
+      // Contenu va vers la gauche
       tl.to(servicesContentRef.current, {
         opacity: 0,
         x: -100,
