@@ -70,7 +70,6 @@ const Services = () => {
       tl.to(servicesContentRef.current, {
         opacity: 0,
         x: -100,
-        rotateY: 45,
         scale: 0.8,
         ease: "power2.inOut",
       }, 0.75);
