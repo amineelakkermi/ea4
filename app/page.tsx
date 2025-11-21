@@ -7,7 +7,6 @@ import Hero from '@/components/Hero'
 import Navbar from '@/components/Navbar'
 import Portfolio from '@/components/Portfolio'
 import Services from '@/components/Services'
-import Technologies from '@/components/Technologies'
 
 const page = () => {
   return (
