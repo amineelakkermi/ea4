@@ -93,7 +93,7 @@ export default function Hero() {
             ref={textRef}
             className={`${styles.paragraph} max-w-[650px] text-gray-200`}
           >
-            I’m a Web Developer specialized in creating fast and aesthetic web experiences using Next.js & TailwindCSS.
+            I’m a Frontend Developer specialized in creating fast and aesthetic web experiences using Next.js & TailwindCSS.
           </p>
         </div>
       </div>
