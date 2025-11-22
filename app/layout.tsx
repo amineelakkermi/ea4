@@ -38,15 +38,15 @@ export const metadata: Metadata = {
     "JavaScript",
     "intégration web",
   ],
-  authors: [{ name: "[Ton Nom]" }],
-  creator: "[Ton Nom]",
-  publisher: "[Ton Nom]",
+  authors: [{ name: "[EA4]" }],
+  creator: "[EA4]",
+  publisher: "[EA4]",
   openGraph: {
-    title: "Portfolio | Développeur Web Front-End & React - [Ton Nom]",
+    title: "Portfolio | Développeur Web Front-End & React - [EA4]",
     description:
       "Développeur web passionné par la création d’expériences numériques modernes et performantes avec React et Next.js.",
     url: "https://ton-site.vercel.app",
-    siteName: "Portfolio de [Ton Nom]",
+    siteName: "Portfolio de [EA4]",
     images: [
       {
         url: "https://ton-site.vercel.app/images/og-image.jpg",
