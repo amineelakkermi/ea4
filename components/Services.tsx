@@ -108,7 +108,7 @@ const Services = () => {
 
         {/* Mobile: Carrousel simple - scroll horizontal */}
         <div className="lg:hidden overflow-x-scroll scrollbar-hide">
-          <div className="flex gap-6 px-6 py-4 w-max">
+          <div className="flex gap-6 py-4 w-max">
             {servicesCardData.map((service, index) => (
               <div 
                 key={`mobile-${service.id}`}

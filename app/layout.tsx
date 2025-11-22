@@ -23,9 +23,9 @@ export const kufam = Kufam({
 
 
 export const metadata: Metadata = {
-  title: "Portfolio | Développeur Web Front-End & React - EA4",
+  title: "Elakkermi Amine | Développeur Web Front-End & React - EA4",
   description:
-    "Découvrez le portfolio de [EA4], développeur web spécialisé en React, Next.js et Tailwind CSS. Création de sites modernes, rapides et optimisés pour le SEO.",
+    "Découvrez le portfolio de Elakkermi Amine, développeur web spécialisé en React, Next.js et Tailwind CSS. Création de sites modernes, rapides et optimisés pour le SEO.",
   keywords: [
     "développeur web",
     "frontend developer",
@@ -38,15 +38,15 @@ export const metadata: Metadata = {
     "JavaScript",
     "intégration web",
   ],
-  authors: [{ name: "[EA4]" }],
-  creator: "[EA4]",
-  publisher: "[EA4]",
+  authors: [{ name: "[Elakkermi Amine]" }],
+  creator: "[Elakkermi Amine]",
+  publisher: "[Elakkermi Amine]",
   openGraph: {
-    title: "Portfolio | Développeur Web Front-End & React - [EA4]",
+    title: "Elakkermi Amine | Développeur Web Front-End & React",
     description:
       "Développeur web passionné par la création d’expériences numériques modernes et performantes avec React et Next.js.",
     url: "https://ea-4.vercel.app",
-    siteName: "Portfolio de [EA4]",
+    siteName: "Portfolio de [Elakkermi Amine]",
    
     locale: "fr_FR",
     type: "website",
