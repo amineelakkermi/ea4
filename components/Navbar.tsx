@@ -79,7 +79,7 @@ export default function Navbar(): JSX.Element {
   return (
     <>
       {/* Logo */}
-      <div id="main-navbar" className={`${styles.padding} fixed top-0 left-0 right-0 z-[1002] max-w-6xl mx-auto flex justify-between items-center`}>
+      <div id="main-navbar" className={`${styles.padding}  fixed top-0 left-0 right-0 z-[1002] max-w-6xl mx-auto flex justify-between items-center`}>
         <Link href="/" className="z-[1000]" aria-label="Go to homepage">
           <Image src={logo2} width={70} height={70} alt="logo" className={`${isOpen ? "hidden" : "block"}`} />
         </Link>

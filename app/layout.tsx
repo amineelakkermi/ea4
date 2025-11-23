@@ -80,6 +80,7 @@ export default function RootLayout({
         className={`${fontClass} ${poppins.variable} ${kufam.variable} antialiased`}
       >
         <ReactLenis root />
+        <Navbar />
         <Cursor />
         {children}
         <Footer />

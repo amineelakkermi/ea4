@@ -13,7 +13,6 @@ const page = () => {
     <main>
       {/* Défilement automatique - Activer avec Ctrl+Shift+A */}
       
-      <Navbar />
       
       <Hero />
       <Experience />
