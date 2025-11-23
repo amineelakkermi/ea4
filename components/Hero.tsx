@@ -66,6 +66,14 @@ export default function Hero() {
         y: 30,
         ease: 'power2.inOut',
       }, 0)
+       
+      // Background disparaît du bas vers le haut
+      tl.to(sectionRef.current, {
+        WebkitMaskPosition: "0% 100%",
+        maskPosition: "0% 100%",
+        ease: "none",
+      }, 0)
+       
     })
 
     return () => ctx.revert()
@@ -76,7 +84,7 @@ export default function Hero() {
       ref={sectionRef}
       id="home"
       aria-labelledby="hero-title"
-      className="relative isolate min-h-[100vh] grid place-items-center overflow-hidden"
+      className="relative bg isolate min-h-[100vh] grid place-items-center overflow-hidden"
     >
       {/* محتوى رئيسي */}
       <div ref={contentRef} className="mx-auto max-w-6xl w-full pt-20 px-6">

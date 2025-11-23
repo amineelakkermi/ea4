@@ -15,9 +15,7 @@ const page = () => {
       
       <Navbar />
       
-      <div className='bg'>
       <Hero />
-      </div>
       <Experience />
       <Services />
       <Portfolio />

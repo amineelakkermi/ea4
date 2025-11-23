@@ -129,8 +129,9 @@ html {
   background-color: var(--color-yellow);
 }
 
-.bg{
-  background: #7b1dff;
+.bg {
+  background-color: #7b1dff;
+ 
 }
 
 .text-mauve{

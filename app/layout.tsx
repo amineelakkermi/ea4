@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
+import { ReactLenis } from "lenis/react";
 
 
 
@@ -78,6 +79,7 @@ export default function RootLayout({
       <body
         className={`${fontClass} ${poppins.variable} ${kufam.variable} antialiased`}
       >
+        <ReactLenis root />
         <Cursor />
         {children}
         <Footer />
